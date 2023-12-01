@@ -26,7 +26,7 @@ jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Run pre-commit with Conda
       uses: quantco/pre-commit-conda@v1
       with:
