@@ -1,10 +1,4 @@
 version: 2
-registries:
-  github:
-    type: git
-    url: https://github.com
-    username: x-access-token
-    password: ${{ secrets.DEPENDABOT_CONTENT_PAT }}
 updates:
   - package-ecosystem: github-actions
     directory: /
@@ -12,20 +6,6 @@ updates:
       interval: daily
     reviewers:
       - quantco/ci
-    registries:
-      - github
-    groups:
-      dependencies:
-        patterns:
-          - "*"
-  - package-ecosystem: github-actions
-    directory: /template/.github/workflows
-    schedule:
-      interval: daily
-    reviewers:
-      - quantco/ci
-    registries:
-      - github
     groups:
       dependencies:
         patterns:
