@@ -1,15 +1,15 @@
 name: pre-commit-conda
 description: run pre-commit
 inputs:
-  extra_args:
+  extra-args:
     description: options to pass to pre-commit run
     required: false
     default: '--all-files'
-  condarc_file:
+  condarc-file:
     description: path to a custom condarc file
     required: false
     default: ''
-  python_version:
+  python-version:
     description: python version to use
     required: false
     default: '3.11'
@@ -17,21 +17,21 @@ runs:
   using: composite
   steps:
   - name: Set up micromamba
-    uses: mamba-org/setup-micromamba@db1df3ba9e07ea86f759e98b575c002747e9e757
+    uses: mamba-org/setup-micromamba@54d4d5980e1a4aa7cdc8b050cf2d19b7e262ce18
     with:
-      condarc_file: ${{ inputs.condarc_file }}
+      condarc-file: ${{ inputs.condarc-file }}
       environment-name: pre-commit
-      cache-environment-key: pre-commit-3|${{ inputs.python_version }}
+      cache-environment-key: pre-commit-3|${{ inputs.python-version }}
       create-args: >-
-        python=${{ inputs.python_version }}
+        python=${{ inputs.python-version }}
         pre-commit=3
   - name: Cache pre-commit
-    uses: actions/cache@v3
+    uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84
     with:
       path: ~/.cache/pre-commit
-      key: pre-commit-3|${{ inputs.python_version }}|${{ hashFiles('.pre-commit-config.yaml') }}
+      key: pre-commit-3|${{ inputs.python-version }}|${{ hashFiles('.pre-commit-config.yaml') }}
   - name: Run pre-commit
-    run: pre-commit run --show-diff-on-failure --color=always ${{ inputs.extra_args }}
+    run: pre-commit run --show-diff-on-failure --color=always ${{ inputs.extra-args }}
     env:
       PRE_COMMIT_USE_MICROMAMBA: '1'
     shell: bash -el {0}
