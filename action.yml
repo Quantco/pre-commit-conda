@@ -26,7 +26,7 @@ runs:
         python=${{ inputs.python-version }}
         pre-commit=3
   - name: Cache pre-commit
-    uses: actions/cache@e12d46a63a90f2fae62d114769bbf2a179198b5c
+    uses: actions/cache@13aacd865c20de90d75de3b17ebe84f7a17d57d2
     with:
       path: ~/.cache/pre-commit
       key: pre-commit-3|${{ inputs.python-version }}|${{ hashFiles('.pre-commit-config.yaml') }}
