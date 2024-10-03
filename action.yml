@@ -17,7 +17,7 @@ runs:
   using: composite
   steps:
   - name: Set up micromamba
-    uses: mamba-org/setup-micromamba@f8b8a1e23a26f60a44c853292711bacfd3eac822
+    uses: mamba-org/setup-micromamba@617811f69075e3fd3ae68ca64220ad065877f246
     with:
       condarc-file: ${{ inputs.condarc-file }}
       environment-name: pre-commit
