@@ -17,7 +17,7 @@ runs:
   using: composite
   steps:
   - name: Set up micromamba
-    uses: mamba-org/setup-micromamba@0dea6379afdaffa5d528b3d1dabc45da37f443fc
+    uses: mamba-org/setup-micromamba@add3a49764cedee8ee24e82dfde87f5bc2914462
     with:
       condarc-file: ${{ inputs.condarc-file }}
       environment-name: pre-commit
@@ -26,7 +26,7 @@ runs:
         python=${{ inputs.python-version }}
         pre-commit=3
   - name: Cache pre-commit
-    uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684
+    uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306
     with:
       path: ~/.cache/pre-commit
       key: pre-commit-3|${{ inputs.python-version }}|${{ hashFiles('.pre-commit-config.yaml') }}
